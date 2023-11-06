@@ -1,0 +1,102 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>F1 corridona</title>
+    <script lang="Javascript">
+
+        var ArrayNomes, tempoPiloto, ArrayNumCarros, i, piloto, volta, media;
+
+        ArrayNomes = new Array(9);
+        ArrayNumCarros = new Array(9);
+        media = new Array(9);
+        tempoPiloto = new Array (9);
+
+
+        tempoPiloto = new Array (9);
+
+        function pegandoValores()
+        {
+            
+            for(i = 0; i<10; ++i)
+            {
+                ArrayNomes[i] = (window.prompt("Informe o nome do "+ i + "º piloto.", "a"));
+
+                do
+                {
+                    ArrayNumCarros[i] = parseInt(window.prompt("Informe o número do "+ i + "º piloto.", i));
+                }
+                while(isNaN(ArrayNumCarros[i]))
+            }
+
+            // Mostrando os valores dos arrays
+      
+            /*for(i = 0; i<10; ++i)
+            {
+                document.write(ArrayNomes[i] + " e " + ArrayNumCarros[i] + "<br>");
+            }*/
+            
+            atribuindoTempo();
+        }
+
+        function atribuindoTempo()
+        {
+            //Criando a matriz bidimensional pra guardar o tempo de cada volta.
+
+            for(i = 0; i<10; ++i)
+            {
+                tempoPiloto[i] = new Array(3);
+                media[i] = 0;
+            }
+            
+            //Atribuindo valores aleatórios pra cada volta xD.
+            i=0;
+
+            for(piloto = 0; piloto<10; ++piloto)
+            {
+                for(volta = 0; volta<3; ++volta)
+                {
+                    tempoPiloto[piloto][volta] = Math.floor(Math.random()*100);
+                    document.write("Piloto: "+ piloto + " Volta: " + volta + " = " + tempoPiloto[piloto][volta] + "<br>");
+                    i++;
+                    
+                    if(i=3)
+                    {
+                        document.write("<br>");
+                        i=0;
+                    }
+
+                    media[piloto] += tempoPiloto[piloto][volta];
+                }
+                media[piloto] /= 3;
+            }
+
+            //Mostrando os valores das corridas.
+
+            i=0;
+            for(piloto = 0; piloto<10; ++piloto)
+            {
+                for(volta = 0; volta<3; ++volta)
+                {
+                    
+                    document.write("Tempo: "+ tempoPiloto[piloto][volta]+ " Média: " + media[piloto] + "<br>");
+                    i++;
+                    if(i=3)
+                    {
+                        document.write("<br>");
+                        i=0;
+                    }
+                }
+            }
+
+
+        }
+
+    </script>  
+</head>
+
+<body>
+    <script>
+        pegandoValores();
+    </script>
+</body>
+</html>
